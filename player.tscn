@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsn1mlw5nk07c"]
+
+[ext_resource type="Script" uid="uid://bae1bo7u2242x" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://cqq66oedkpkvo" path="res://ui.tscn" id="2_onrkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+size = Vector2(8, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_onrkg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_i3pqv"]
+size = Vector2(16, 16)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_4flbx")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_onrkg")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Node2D"]
+position = Vector2(0, -8)
+scale = Vector2(0.75, 1)
+mesh = SubResource("QuadMesh_i3pqv")
+
+[node name="ui" parent="." instance=ExtResource("2_onrkg")]
